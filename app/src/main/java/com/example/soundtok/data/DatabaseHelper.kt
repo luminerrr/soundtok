@@ -8,7 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper
 import com.example.soundtok.ui.add.AddSound
 import com.example.soundtok.ui.home.SoundList
 
-class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+class DatabaseHelper(context: Context) :
+    SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
         private const val DATABASE_NAME = "soundtok.db"
@@ -83,7 +84,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                         title = it.getString(it.getColumnIndex(COLUMN_TITLE)),
                         duration = it.getString(it.getColumnIndex(COLUMN_DURATION)),
                         rating = it.getString(it.getColumnIndex(COLUMN_RATING)),
-                        description = it.getString(it.getColumnIndex(COLUMN_DESCRIPTION))
+                        description = it.getString(it.getColumnIndex(COLUMN_DESCRIPTION)),
+                        fileUrl = it.getString(it.getColumnIndex(COLUMN_FILE_URL))
                     )
                     sounds.add(sound)
                 } while (it.moveToNext())
@@ -115,7 +117,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                     title = it.getString(it.getColumnIndex(COLUMN_TITLE)),
                     duration = it.getString(it.getColumnIndex(COLUMN_DURATION)),
                     rating = it.getString(it.getColumnIndex(COLUMN_RATING)),
-                    description = it.getString(it.getColumnIndex(COLUMN_DESCRIPTION))
+                    description = it.getString(it.getColumnIndex(COLUMN_DESCRIPTION)),
+                    fileUrl = it.getString(it.getColumnIndex(COLUMN_FILE_URL))
                 )
             }
         }
