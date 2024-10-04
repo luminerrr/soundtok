@@ -100,17 +100,17 @@
 
         <Button
             android:id="@+id/recordButton"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
             android:backgroundTint="#003366"
-        android:text="Record Sound"
-        android:textColor="#FFFFFFFF" />
+            android:text="Record Sound"
+            android:textColor="#FFFFFFFF" />
 
         <Button
             android:id="@+id/stopButton"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_weight="1"

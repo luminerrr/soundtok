@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailActivity"
-    android:padding="50dp"
-    android:background="@android:color/white">
+    android:padding="50dp">
 
     <TextView
         android:id="@+id/titleDetailTv"
@@ -15,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:text="First Recording"
-        android:textColor="#001F3F"
+
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +38,6 @@
         android:layout_height="wrap_content"
         android:text="36m"
         android:textSize="16sp"
-        android:textColor="@android:color/black"
         app:layout_constraintStart_toEndOf="@+id/labelDescriptionTv"
         app:layout_constraintTop_toBottomOf="@+id/titleDetailTv" />
 
@@ -59,7 +57,6 @@
         android:layout_height="wrap_content"
         android:text="Jakarta Selatan"
         android:textSize="16sp"
-        android:textColor="@android:color/black"
         app:layout_constraintStart_toEndOf="@+id/labelLocationTv"
         app:layout_constraintTop_toBottomOf="@+id/labelDescriptionTv" />
 
@@ -77,7 +74,6 @@
             android:layout_height="wrap_content"
             android:text="0:05"
             android:textSize="18sp"
-            android:textColor="@android:color/black"
             android:padding="8dp" />
 
         <SeekBar
@@ -96,6 +92,7 @@
             <Button
                 android:id="@+id/playButton"
                 android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
                 android:text="Play"
                 android:textColor="@android:color/white"
                 android:padding="10dp"
@@ -105,6 +102,7 @@
             <Button
                 android:id="@+id/stopButton"
                 android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
                 android:text="Stop"
                 android:backgroundTint="#C62828"
                 android:textColor="@android:color/white"
@@ -129,7 +127,6 @@
         android:layout_height="wrap_content"
         android:text="18+"
         android:textSize="16sp"
-        android:textColor="@android:color/black"
         app:layout_constraintStart_toEndOf="@+id/labelRestrictionTv"
         app:layout_constraintTop_toBottomOf="@+id/locationDetailTv" />
 
@@ -147,7 +144,6 @@
         android:id="@+id/ratingTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="5"
         android:textSize="16sp"
         android:textColor="@android:color/black"
         app:layout_constraintStart_toEndOf="@+id/labelRatingTv"
