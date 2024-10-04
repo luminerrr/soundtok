@@ -24,6 +24,7 @@ import java.io.InputStream
 import java.util.Date
 import android.media.MediaRecorder
 import android.widget.CheckBox
+import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.soundtok.helpers.DurationHelper
@@ -37,6 +38,7 @@ class AddFragment : Fragment() {
     private lateinit var submitButton: Button
     private lateinit var recordBtn: Button
     private lateinit var stopBtn: Button
+    private lateinit var recordIndicatorTV: TextView
     private var mediaRecorder: MediaRecorder? = null
     private var audioFile: File? = null
 
@@ -73,6 +75,7 @@ class AddFragment : Fragment() {
         submitButton = view.findViewById(R.id.submitBtn)
         recordBtn = view.findViewById(R.id.recordButton)
         stopBtn = view.findViewById(R.id.stopButton)
+        recordIndicatorTV = view.findViewById(R.id.recordIndicatorTV)
 
         view.findViewById<Button>(R.id.uploadButton).setOnClickListener {
             openFilePicker()
@@ -104,12 +107,14 @@ class AddFragment : Fragment() {
 
         recordBtn.setOnClickListener {
             startRecording()
+            recordIndicatorTV.text = "Recording..."
             recordBtn.isEnabled = false
             stopBtn.isEnabled = true
         }
 
         stopBtn.setOnClickListener {
             stopRecording()
+            recordIndicatorTV.text = "Finished Recording"
 //            recordBtn.isEnabled = true
             stopBtn.isEnabled = false
             submitButton.isEnabled = true
