@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailActivity"
+    android:padding="16dp"
+    >
+
+    <TextView
+        android:id="@+id/titleDetailTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="First Recording"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textStyle="bold"
+        android:textSize="36dp"
+        />
+
+    <TextView
+        android:id="@+id/labelDurationTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Duration: "
+        app:layout_constraintStart_toStartOf="@+id/titleDetailTv"
+        app:layout_constraintTop_toBottomOf="@+id/titleDetailTv" />
+
+    <TextView
+        android:id="@+id/durationDetailTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="36m"
+        app:layout_constraintStart_toEndOf="@+id/labelDurationTv"
+        app:layout_constraintTop_toBottomOf="@+id/titleDetailTv" />
+
+    <TextView
+        android:id="@+id/labelLocationTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location Recorded: "
+        app:layout_constraintStart_toStartOf="@+id/labelDurationTv"
+        app:layout_constraintTop_toBottomOf="@+id/labelDurationTv" />
+
+    <TextView
+        android:id="@+id/locationDetailTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jakarta Selatan"
+        app:layout_constraintStart_toEndOf="@+id/labelLocationTv"
+        app:layout_constraintTop_toBottomOf="@+id/labelDurationTv" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
