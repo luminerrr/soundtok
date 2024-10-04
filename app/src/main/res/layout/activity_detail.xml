@@ -21,7 +21,7 @@
         />
 
     <TextView
-        android:id="@+id/labelDurationTv"
+        android:id="@+id/labelDescriptionTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Duration: "
@@ -29,11 +29,11 @@
         app:layout_constraintTop_toBottomOf="@+id/titleDetailTv" />
 
     <TextView
-        android:id="@+id/durationDetailTv"
+        android:id="@+id/descriptionTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="36m"
-        app:layout_constraintStart_toEndOf="@+id/labelDurationTv"
+        app:layout_constraintStart_toEndOf="@+id/labelDescriptionTv"
         app:layout_constraintTop_toBottomOf="@+id/titleDetailTv" />
 
     <TextView
@@ -41,8 +41,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Location Recorded: "
-        app:layout_constraintStart_toStartOf="@+id/labelDurationTv"
-        app:layout_constraintTop_toBottomOf="@+id/labelDurationTv" />
+        app:layout_constraintStart_toStartOf="@+id/labelDescriptionTv"
+        app:layout_constraintTop_toBottomOf="@+id/labelDescriptionTv" />
 
     <TextView
         android:id="@+id/locationDetailTv"
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:text="Jakarta Selatan"
         app:layout_constraintStart_toEndOf="@+id/labelLocationTv"
-        app:layout_constraintTop_toBottomOf="@+id/labelDurationTv" />
+        app:layout_constraintTop_toBottomOf="@+id/labelDescriptionTv" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -60,6 +60,12 @@
         tools:layout_editor_absoluteX="16dp"
         android:orientation="vertical"
         >
+
+        <TextView
+            android:id="@+id/durationTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0:05" />
 
         <SeekBar
             android:id="@+id/seekBar"
@@ -78,6 +84,38 @@
             android:layout_height="wrap_content"
             android:text="Stop" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/labelRestrictionTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Restriction: "
+        app:layout_constraintStart_toStartOf="@+id/labelLocationTv"
+        app:layout_constraintTop_toBottomOf="@+id/labelLocationTv" />
+
+    <TextView
+        android:id="@+id/restrictionTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="18+"
+        app:layout_constraintStart_toEndOf="@+id/labelRestrictionTv"
+        app:layout_constraintTop_toBottomOf="@+id/locationDetailTv" />
+
+    <TextView
+        android:id="@+id/labelRatingTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rating: "
+        app:layout_constraintStart_toStartOf="@+id/labelRestrictionTv"
+        app:layout_constraintTop_toBottomOf="@+id/labelRestrictionTv" />
+
+    <TextView
+        android:id="@+id/ratingTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5"
+        app:layout_constraintStart_toEndOf="@+id/labelRatingTv"
+        app:layout_constraintTop_toBottomOf="@+id/restrictionTv" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

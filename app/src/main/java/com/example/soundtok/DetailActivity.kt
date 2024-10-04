@@ -19,8 +19,11 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var stopButton: Button
     private lateinit var seekBar: SeekBar
     private lateinit var titleTextView: TextView
-    private lateinit var durationTextView: TextView
+    private lateinit var descriptionTextView: TextView
     private lateinit var locationTextView: TextView
+    private lateinit var restriction: TextView
+    private lateinit var rating: TextView
+    private lateinit var duration: TextView
 
     private var mediaPlayer: MediaPlayer? = null
     private var isPlaying = false
@@ -42,8 +45,11 @@ class DetailActivity : AppCompatActivity() {
         stopButton = findViewById(R.id.stopButton)
         seekBar = findViewById(R.id.seekBar)
         titleTextView = findViewById(R.id.titleDetailTv)
-        durationTextView = findViewById(R.id.durationDetailTv)
+        descriptionTextView = findViewById(R.id.descriptionTv)
         locationTextView = findViewById(R.id.locationDetailTv)
+        restriction = findViewById(R.id.restrictionTv)
+        rating = findViewById(R.id.ratingTv)
+        duration = findViewById(R.id.durationTv)
 
         // Initialize DatabaseHelper
         databaseHelper = DatabaseHelper(this)
@@ -54,8 +60,11 @@ class DetailActivity : AppCompatActivity() {
 
         // Set text views
         titleTextView.text = selectedSound?.title
-        durationTextView.text = selectedSound?.duration
+        descriptionTextView.text = selectedSound?.description
         locationTextView.text = selectedSound?.rating
+        restriction.text = selectedSound?.restriction
+        rating.text = selectedSound?.rating
+        duration.text = selectedSound?.duration
 
         // Setup MediaPlayer
         setupMediaPlayer(selectedSound?.fileUrl)
