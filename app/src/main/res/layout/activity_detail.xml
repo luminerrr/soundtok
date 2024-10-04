@@ -6,25 +6,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailActivity"
-    android:padding="16dp"
-    >
+    android:padding="50dp"
+    android:background="@android:color/white">
 
     <TextView
         android:id="@+id/titleDetailTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
         android:text="First Recording"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#001F3F"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:textSize="36dp"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/labelDescriptionTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Duration: "
+        android:textSize="16sp"
+        android:textColor="@android:color/darker_gray"
         app:layout_constraintStart_toStartOf="@+id/titleDetailTv"
         app:layout_constraintTop_toBottomOf="@+id/titleDetailTv" />
 
@@ -33,6 +38,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="36m"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
         app:layout_constraintStart_toEndOf="@+id/labelDescriptionTv"
         app:layout_constraintTop_toBottomOf="@+id/titleDetailTv" />
 
@@ -41,6 +48,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Location Recorded: "
+        android:textSize="16sp"
+        android:textColor="@android:color/darker_gray"
         app:layout_constraintStart_toStartOf="@+id/labelDescriptionTv"
         app:layout_constraintTop_toBottomOf="@+id/labelDescriptionTv" />
 
@@ -49,6 +58,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Jakarta Selatan"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
         app:layout_constraintStart_toEndOf="@+id/labelLocationTv"
         app:layout_constraintTop_toBottomOf="@+id/labelDescriptionTv" />
 
@@ -57,32 +68,49 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/labelLocationTv"
-        tools:layout_editor_absoluteX="16dp"
         android:orientation="vertical"
-        >
+        android:paddingTop="16dp">
 
         <TextView
             android:id="@+id/durationTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="0:05" />
+            android:text="0:05"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:padding="8dp" />
 
         <SeekBar
             android:id="@+id/seekBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/playButton"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Play" />
+            android:layout_marginBottom="16dp" />
 
-        <Button
-            android:id="@+id/stopButton"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Stop" />
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/playButton"
+                android:layout_height="wrap_content"
+                android:text="Play"
+                android:textColor="@android:color/white"
+                android:padding="10dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/stopButton"
+                android:layout_height="wrap_content"
+                android:text="Stop"
+                android:backgroundTint="#C62828"
+                android:textColor="@android:color/white"
+                android:padding="10dp"
+                android:layout_weight="1" />
+        </LinearLayout>
     </LinearLayout>
 
     <TextView
@@ -90,6 +118,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Restriction: "
+        android:textSize="16sp"
+        android:textColor="@android:color/darker_gray"
         app:layout_constraintStart_toStartOf="@+id/labelLocationTv"
         app:layout_constraintTop_toBottomOf="@+id/labelLocationTv" />
 
@@ -98,6 +128,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="18+"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
         app:layout_constraintStart_toEndOf="@+id/labelRestrictionTv"
         app:layout_constraintTop_toBottomOf="@+id/locationDetailTv" />
 
@@ -106,6 +138,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rating: "
+        android:textSize="16sp"
+        android:textColor="@android:color/darker_gray"
         app:layout_constraintStart_toStartOf="@+id/labelRestrictionTv"
         app:layout_constraintTop_toBottomOf="@+id/labelRestrictionTv" />
 
@@ -114,8 +148,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="5"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
         app:layout_constraintStart_toEndOf="@+id/labelRatingTv"
         app:layout_constraintTop_toBottomOf="@+id/restrictionTv" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

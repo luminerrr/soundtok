@@ -4,50 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
+    android:padding="25dp"
     tools:context=".ui.add.AddFragment">
 
     <TextView
         android:id="@+id/addTitleTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:text="Add new sound"
-        android:textSize="32dp"
+        android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/descriptionAddEt"
-        android:layout_width="wrap_content"
+        android:id="@+id/editTextText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Description"
+        android:layout_marginTop="4dp"
+        android:hint="Title"
         android:inputType="text"
-        android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
+        app:layout_constraintTop_toBottomOf="@+id/titleTv" />
 
     <TextView
         android:id="@+id/titleTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:textSize="18sp"
+        android:layout_marginTop="24dp"
         android:text="Title"
-        app:layout_constraintStart_toStartOf="@+id/editTextText"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addTitleTv" />
+
+    <EditText
+        android:id="@+id/descriptionAddEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Description"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
 
     <TextView
         android:id="@+id/instructionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="152dp"
         android:text="Select an option to upload or record a sound:"
         android:textSize="18sp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descriptionAddEt" />
@@ -56,64 +65,73 @@
         android:id="@+id/uploadButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:text="Upload Sound"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/instructionTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/instructionTextView"
+        android:backgroundTint="#001F3F"
+        android:textColor="#FFFFFFFF" />
 
-    <GridLayout
+    <TextView
+        android:id="@+id/recordLabelTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Record Audio"
+        app:layout_constraintTop_toBottomOf="@+id/uploadButton"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/recordIndicatorTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Press Button to start recording"
+        app:layout_constraintTop_toBottomOf="@+id/recordLabelTV" />
+
+    <LinearLayout
         android:id="@+id/recordingLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/uploadButton">
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/recordIndicatorTV">
 
         <Button
             android:id="@+id/recordButton"
-            android:layout_margin="16dp"
-            android:text="Record Sound" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="#003366"
+        android:text="Record Sound"
+        android:textColor="#FFFFFFFF" />
 
         <Button
             android:id="@+id/stopButton"
-            android:layout_margin="16dp"
-            android:text="Stop Recording" />
-
-    </GridLayout>
-
-
-    <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Title"
-        android:inputType="text"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleTv" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Description"
-        app:layout_constraintStart_toStartOf="@+id/descriptionAddEt"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="#C62828"
+            android:text="Stop Recording"
+            android:textColor="#FFFFFFFF" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/submitBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:enabled="false"
         android:text="Submit Sound"
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/recordingLayout"
-        app:layout_constraintVertical_bias="0.608" />
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#001F3F"
+        android:textColor="#FFFFFFFF" />
 
     <CheckBox
         android:id="@+id/isSaveCheckbox"
@@ -122,6 +140,5 @@
         android:text="Safe For Kids"
         app:layout_constraintBottom_toTopOf="@+id/submitBtn"
         app:layout_constraintStart_toStartOf="@+id/submitBtn"
-        app:layout_constraintTop_toBottomOf="@+id/recordingLayout" />
-
+        app:layout_constraintTop_toBottomOf="@id/recordingLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>
