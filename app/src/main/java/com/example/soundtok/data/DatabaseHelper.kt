@@ -85,7 +85,8 @@ class DatabaseHelper(context: Context) :
                         duration = it.getString(it.getColumnIndex(COLUMN_DURATION)),
                         rating = it.getString(it.getColumnIndex(COLUMN_RATING)),
                         description = it.getString(it.getColumnIndex(COLUMN_DESCRIPTION)),
-                        fileUrl = it.getString(it.getColumnIndex(COLUMN_FILE_URL))
+                        fileUrl = it.getString(it.getColumnIndex(COLUMN_FILE_URL)),
+                        restriction = it.getString(it.getColumnIndex(COLUMN_AGE_RESTRICTION))
                     )
                     sounds.add(sound)
                 } while (it.moveToNext())
@@ -118,7 +119,8 @@ class DatabaseHelper(context: Context) :
                     duration = it.getString(it.getColumnIndex(COLUMN_DURATION)),
                     rating = it.getString(it.getColumnIndex(COLUMN_RATING)),
                     description = it.getString(it.getColumnIndex(COLUMN_DESCRIPTION)),
-                    fileUrl = it.getString(it.getColumnIndex(COLUMN_FILE_URL))
+                    fileUrl = it.getString(it.getColumnIndex(COLUMN_FILE_URL)),
+                    restriction = it.getString(it.getColumnIndex(COLUMN_AGE_RESTRICTION))
                 )
             }
         }
