@@ -2,6 +2,7 @@ package com.example.soundtok.ui.add
 
 import android.content.ContentResolver
 import android.content.pm.PackageManager
+import android.media.MediaMetadataRetriever
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -22,7 +23,10 @@ import java.io.FileOutputStream
 import java.io.InputStream
 import java.util.Date
 import android.media.MediaRecorder
+import android.widget.CheckBox
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.example.soundtok.helpers.DurationHelper
 
 class AddFragment : Fragment() {
     private lateinit var fileUrl: String
@@ -36,15 +40,19 @@ class AddFragment : Fragment() {
     private var mediaRecorder: MediaRecorder? = null
     private var audioFile: File? = null
 
+    //    Helper
+    private val durationHelper = DurationHelper()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        pickAudioLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-            uri?.let {
-                saveAudioFile(it)
-                submitButton.isEnabled = true
+        pickAudioLauncher =
+            registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+                uri?.let {
+                    saveAudioFile(it)
+                    submitButton.isEnabled = true
+                }
             }
-        }
 
         checkPermissions()
     }
@@ -74,10 +82,24 @@ class AddFragment : Fragment() {
             val title = titleEditText.text.toString()
             val description = descriptionEditText.text.toString()
             val dateNow = Date()
-
-            val sound = AddSound(title, description, dateNow, "1.5", "1.2", "4:53", "20", "5", fileUrl)
+            val durationMillis = durationHelper.getAudioDuration(fileUrl)
+            val durationString = durationHelper.formatDuration(durationMillis / 1000)
+            val isSafeForKids = view.findViewById<CheckBox>(R.id.isSaveCheckbox).isChecked
+            val sound =
+                AddSound(
+                    title,
+                    description,
+                    dateNow,
+                    "1.5",
+                    "1.2",
+                    durationString,
+                    if (isSafeForKids) "Safe" else "18+",
+                    "5",
+                    fileUrl
+                )
             dbHelper.insertSound(sound)
             Log.d("AddFragment", "Sound submitted: $sound")
+            findNavController().navigate(R.id.navigation_home)
         }
 
         recordBtn.setOnClickListener {
@@ -119,11 +141,21 @@ class AddFragment : Fragment() {
     private val REQUEST_PERMISSION_CODE = 100
 
     private fun checkPermissions() {
-        if (ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED ||
-            ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                android.Manifest.permission.RECORD_AUDIO
+            ) != PackageManager.PERMISSION_GRANTED ||
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
 
             requestPermissions(
-                arrayOf(android.Manifest.permission.RECORD_AUDIO, android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                arrayOf(
+                    android.Manifest.permission.RECORD_AUDIO,
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ),
                 REQUEST_PERMISSION_CODE
             )
         }
@@ -143,7 +175,11 @@ class AddFragment : Fragment() {
                 Log.d("Recording", "Recording started")
             } catch (e: Exception) {
                 Log.e("Recording Error", "Error starting recording: ${e.message}")
-                Toast.makeText(requireContext(), "Recording failed: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Recording failed: ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
@@ -156,7 +192,11 @@ class AddFragment : Fragment() {
                 fileUrl = audioFile?.absolutePath.toString() // Save the file URL for future use
             } catch (e: Exception) {
                 Log.e("Recording Error", "Error stopping recording: ${e.message}")
-                Toast.makeText(requireContext(), "Stopping recording failed: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Stopping recording failed: ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
             } finally {
                 release()
                 mediaRecorder = null
@@ -164,14 +204,22 @@ class AddFragment : Fragment() {
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_PERMISSION_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permission granted, proceed with recording
             } else {
                 // Permission denied, show a message to the user
-                Toast.makeText(requireContext(), "Permissions required for recording audio", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Permissions required for recording audio",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
